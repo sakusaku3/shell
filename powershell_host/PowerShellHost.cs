@@ -18,24 +18,42 @@ namespace shell.ViewModel
 		/// <summary>
 		/// エラーメッセージテンプレート
 		/// </summary>
-		private const string ERROR_MESSAGE = "{0}\r\n    + CategoryInfo          : {1}\r\n    + FullyQualifiedErrorId : {2}";
+		private const string ErrorMessage = "{0}\r\n    + CategoryInfo          : {1}\r\n    + FullyQualifiedErrorId : {2}";
 
 		/// <summary>
 		/// 位置付きエラーメッセージテンプレート
 		/// </summary>
-		private const string ERROR_MESSAGE_WITH_POSITION = "{0}\r\n{1}\r\n    + CategoryInfo          : {2}\r\n    + FullyQualifiedErrorId : {3}";
+		private const string ErrorMessageWithPosition = "{0}\r\n{1}\r\n    + CategoryInfo          : {2}\r\n    + FullyQualifiedErrorId : {3}";
 		#endregion
 
 		#region フィールド
+		/// <summary>
+		/// ランスペース
+		/// </summary>
+		/// <remarks>
+		/// 制約付きの実行領域
+		/// </remarks>
 		private readonly Runspace runspace;
 
+		/// <summary>
+		/// コマンド履歴
+		/// </summary>
 		private readonly List<string> history = new List<string>();
 
+		/// <summary>
+		/// 呼び出しリスト
+		/// </summary>
 		private readonly ObservableCollection<IShellInvocation> invocations 
 			= new ObservableCollection<IShellInvocation>();
 
+		/// <summary>
+		/// 叩いたコマンドの数
+		/// </summary>
 		private int count;
 
+		/// <summary>
+		/// 追加モジュールリスト
+		/// </summary>
         private IEnumerable<string> additionalModules;
 		#endregion
 
@@ -157,7 +175,7 @@ namespace shell.ViewModel
 			var l_sb = new StringBuilder();
 			foreach (var l_error in p_powershell.Streams.Error)
 			{
-				l_sb.AppendLine(string.Format(ERROR_MESSAGE_WITH_POSITION, l_error, l_error.InvocationInfo.PositionMessage, l_error.CategoryInfo, l_error.FullyQualifiedErrorId));
+				l_sb.AppendLine(string.Format(ErrorMessageWithPosition, l_error, l_error.InvocationInfo.PositionMessage, l_error.CategoryInfo, l_error.FullyQualifiedErrorId));
 			}
 
 			return new InvocationResult(Constants.InvocationResultKind.Error, l_sb.ToString());
@@ -180,15 +198,15 @@ namespace shell.ViewModel
 
 			if (l_invocationInfo == null)
 			{
-				return string.Format(ERROR_MESSAGE, l_container.ErrorRecord, l_container.ErrorRecord.CategoryInfo, l_container.ErrorRecord.FullyQualifiedErrorId);
+				return string.Format(ErrorMessage, l_container.ErrorRecord, l_container.ErrorRecord.CategoryInfo, l_container.ErrorRecord.FullyQualifiedErrorId);
 			}
 
-			if (l_invocationInfo.PositionMessage != null && ERROR_MESSAGE.IndexOf(l_invocationInfo.PositionMessage, StringComparison.Ordinal) != -1)
+			if (l_invocationInfo.PositionMessage != null && ErrorMessage.IndexOf(l_invocationInfo.PositionMessage, StringComparison.Ordinal) != -1)
 			{
-				return string.Format(ERROR_MESSAGE, l_container.ErrorRecord, l_container.ErrorRecord.CategoryInfo, l_container.ErrorRecord.FullyQualifiedErrorId);
+				return string.Format(ErrorMessage, l_container.ErrorRecord, l_container.ErrorRecord.CategoryInfo, l_container.ErrorRecord.FullyQualifiedErrorId);
 			}
 
-			return string.Format(ERROR_MESSAGE_WITH_POSITION, l_container.ErrorRecord, l_invocationInfo.PositionMessage, l_container.ErrorRecord.CategoryInfo, l_container.ErrorRecord.FullyQualifiedErrorId);
+			return string.Format(ErrorMessageWithPosition, l_container.ErrorRecord, l_invocationInfo.PositionMessage, l_container.ErrorRecord.CategoryInfo, l_container.ErrorRecord.FullyQualifiedErrorId);
 		}
 		#endregion
 

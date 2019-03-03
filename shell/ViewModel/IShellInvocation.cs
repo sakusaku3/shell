@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,16 +6,14 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-
 namespace shell.ViewModel
 {
    	/// <summary>
-	/// PowerShell呼び出し インターフェース
-	/// Windows PowerShell おけるコマンド入力から実行までの 1 サイクルの操作を公開します。
+	/// Shell呼び出し インターフェース
 	/// </summary>
 	public interface IShellInvocation : INotifyPropertyChanged
 	{
-		#region プロパティ
+		#region properties
 		/// <summary>
 		/// 呼び出しステータス
 		/// </summary>
@@ -31,14 +29,28 @@ namespace shell.ViewModel
 		/// </summary>
 		int Number { get; }
 
+		/// <summary>
+		/// 実行するスクリプト
+		/// </summary>
 		string Script { get; set; }
 		#endregion
 
-		#region メソッド
+		#region methods
+		/// <summary>
+		/// 次履歴をセット
+		/// </summary>
+		/// <returns></returns>
 		bool SetNextHistory();
 
+		/// <summary>
+		/// 前履歴をセット
+		/// </summary>
+		/// <returns></returns>
 		bool SetPreviousHistory();
 
+		/// <summary>
+		/// コマンド実行
+		/// </summary>
 		void Invoke();
 		#endregion
 	}

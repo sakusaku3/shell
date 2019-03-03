@@ -99,6 +99,10 @@
       <Project>{a510a6d0-d315-4394-a7f9-3fae3cf3ded1}</Project>
       <Name>cmdlets</Name>
     </ProjectReference>
+    <ProjectReference Include="..\myshell\myshell.csproj">
+      <Project>{73a34a61-68b1-42f7-afb6-23870f959704}</Project>
+      <Name>myshell</Name>
+    </ProjectReference>
     <ProjectReference Include="..\powershell_host\powershell_host.csproj">
       <Project>{e9a96ac2-4e42-4dda-9b1e-ea235bce29fa}</Project>
       <Name>powershell_host</Name>

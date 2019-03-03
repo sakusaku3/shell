@@ -7,9 +7,6 @@
         xmlns:s="clr-namespace:shell.View;assembly=shell"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Window.DataContext>
-        <local:MainViewModel/>
-    </Window.DataContext>
-
-    <s:ShellConsole ShellHost="{Binding ShellHost}"/>
+    <!--<s:ShellConsole ShellHost="{Binding ShellHost}"/>-->
+    <s:ShellConsole Name="Console"/>
 </Window>

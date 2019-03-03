@@ -7,8 +7,14 @@ using System.Threading.Tasks;
 
 namespace shell.ViewModel
 {
+	/// <summary>
+	/// シェルホストのインターフェース
+	/// </summary>
 	public interface IShellHost
 	{
+		/// <summary>
+		/// 呼び出しオブジェクトリスト
+		/// </summary>
 		ReadOnlyObservableCollection<IShellInvocation> Invocations { get; }
 	}
 }

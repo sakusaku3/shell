@@ -10,6 +10,8 @@ namespace shell_view_test
     {
         public shell.ViewModel.PowerShellHost ShellHost { get; set; }
 
+        public myshell.MyShellHost MyShellHost { get; set; }
+
         public MainViewModel()
         {
             var modules = new List<string>
@@ -21,6 +23,8 @@ namespace shell_view_test
 
             this.ShellHost = new shell.ViewModel.PowerShellHost(modules);
             this.ShellHost.Open();
+
+			this.MyShellHost = new myshell.MyShellHost();
         }
     }
 }

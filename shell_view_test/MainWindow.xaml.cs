@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +23,12 @@ namespace shell_view_test
         public MainWindow()
         {
             InitializeComponent();
+
+			var l_vm = new MainViewModel();
+
+			this.DataContext = l_vm;
+			this.Console.ShellHost = l_vm.MyShellHost;
+			l_vm.MyShellHost.Open();
         }
     }
 }

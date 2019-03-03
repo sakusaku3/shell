@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -7,6 +7,7 @@ namespace shell.ViewModel
 {
 	/// <summary>
 	/// PowerShell呼び出しのパック
+	/// Windows PowerShell おけるコマンド入力から実行までの 1 サイクルの操作を公開します。
 	/// </summary>
 	public class PowerShellInvocation : IShellInvocation
 	{
