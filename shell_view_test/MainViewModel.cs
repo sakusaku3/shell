@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,12 +12,14 @@ namespace shell_view_test
 
         public MainViewModel()
         {
-            var l_modules = new List<string>
+            var modules = new List<string>
             {
                 typeof(cmdlets.GetPersonCmdlet).Assembly.Location
             };
 
-            this.ShellHost = new shell.ViewModel.PowerShellHost(l_modules);
+			Console.WriteLine(string.Join(",", modules));
+
+            this.ShellHost = new shell.ViewModel.PowerShellHost(modules);
             this.ShellHost.Open();
         }
     }

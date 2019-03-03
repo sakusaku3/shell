@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -36,7 +36,7 @@ namespace shell.ViewModel
 
 		private int count;
 
-        private IEnumerable<string> modules;
+        private IEnumerable<string> additionalModules;
 		#endregion
 
 		#region プロパティ
@@ -47,10 +47,10 @@ namespace shell.ViewModel
 		#endregion
 
 		#region コンストラクタ
-		public PowerShellHost(IEnumerable<string> p_modules)
+		public PowerShellHost(IEnumerable<string> additionalModules)
 		{
 			this.runspace = RunspaceFactory.CreateRunspace();
-            this.modules = p_modules;
+            this.additionalModules = additionalModules;
 		}
 		#endregion
 
@@ -64,13 +64,13 @@ namespace shell.ViewModel
 			this.invocations.Add(new PowerShellInvocation(++this.count, x => this.HandleInvocationRequested(x), this.history));
 		}
 
-        private void Initialize()
+		private void Initialize()
         {
             using (var powershell = PowerShell.Create())
             {
                 powershell.Runspace = this.runspace;
 
-                foreach(var l_m in this.modules)
+                foreach(var l_m in this.additionalModules)
                 {
                     powershell.AddCommand("Import-Module").AddParameter("Name", l_m);
                     powershell.Invoke();

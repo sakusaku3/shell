@@ -33,9 +33,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.PowerShell.5.ReferenceAssemblies.1.1.0\lib\net4\System.Management.Automation.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -73,15 +70,11 @@
     <Compile Include="ViewModel\InvocationResult.cs" />
     <Compile Include="ViewModel\IShellHost.cs" />
     <Compile Include="ViewModel\IShellInvocation.cs" />
-    <Compile Include="ViewModel\PowerShellHost.cs" />
-    <Compile Include="ViewModel\PowerShellInvocation.cs" />
-    <Compile Include="ViewModel\PowerShellMessage.cs" />
     <Compile Include="View\ShellConsole.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
